@@ -68,6 +68,7 @@ class CustomMovieRepositoryImpl(private val mongoTemplate: MongoTemplate) : Cust
         return mongoTemplate.aggregate(aggregation, "movie", MovieRatingsAvg::class.java).mappedResults
     }
 
+
     override fun find10MoviesMostRatedBetweenDates(): List<MoviesCount> {
         val aggregation = newAggregation(
             match(Criteria.where("genres").`is`("Comedy")),
